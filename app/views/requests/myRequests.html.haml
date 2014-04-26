@@ -18,7 +18,7 @@
     %tbody
       - requests.each do |request|
         %tr
-          %td= request.user.email
+          %td= request.user
           %td= request.title
           %td= request.description
           %td= link_to 'Show', request

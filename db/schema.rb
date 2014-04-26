@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140426083334) do
+ActiveRecord::Schema.define(version: 20140426084744) do
+
+  create_table "offers", force: true do |t|
+    t.integer  "user_id"
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "request_id"
+  end
+
+  add_index "offers", ["user_id"], name: "index_offers_on_user_id"
 
   create_table "requests", force: true do |t|
     t.integer  "user_id"

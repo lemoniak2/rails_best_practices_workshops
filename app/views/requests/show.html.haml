@@ -2,15 +2,15 @@
   = link_to requests_path, :class => 'btn btn-default' do
     %span.glyphicon.glyphicon-list-alt
     Back
-  = link_to edit_request_path(@request), :class => 'btn btn-primary' do
+  = link_to edit_request_path(request), :class => 'btn btn-primary' do
     %span.glyphicon.glyphicon-pencil
     Edit
   %h1 Show request
 
 %dl.dl-horizontal
   %dt User:
-  %dd= @request.user
+  %dd= request_object.user
   %dt Title:
-  %dd= @request.title
+  %dd= request_object.title
   %dt Description:
-  %dd= @request.description
+  %dd= request_object.description

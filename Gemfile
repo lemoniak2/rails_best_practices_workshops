@@ -21,6 +21,7 @@ gem 'draper'
 gem 'decent_exposure'
 
 group :development do
+  gem 'binding_of_caller'
   gem 'guard-rails', '~> 0.5.0'
   gem 'guard-bundler', '~> 2.0.0'
   gem 'guard-livereload', '~> 2.1.1', require: false
