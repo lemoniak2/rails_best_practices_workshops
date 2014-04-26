@@ -1,6 +1,8 @@
 RailsBestPracticesWorkshops::Application.routes.draw do
-  resources :offers
-  resources :requests
+  resources :requests do
+    resources :offers
+  end
+
   devise_for :users
 
   root to: "requests#index"

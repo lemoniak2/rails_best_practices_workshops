@@ -1,10 +1,6 @@
 .page-header
-  = link_to offers_path, :class => 'btn btn-default' do
+  = link_to decorated_offer.request, :class => 'btn btn-default' do
     %span.glyphicon.glyphicon-list-alt
     Back
-  = link_to offer, :class => 'btn btn-primary' do
-    %span.glyphicon.glyphicon-info-sign
-    Show
   %h1 Editing offer
-
-= render 'form'
+= render partial: 'form', locals: {url: request_offer_path(request_object, decorated_offer)}

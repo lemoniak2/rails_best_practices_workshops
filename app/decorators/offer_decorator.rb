@@ -1,13 +1,13 @@
-class OfferDecorator < Draper::Decorator
+class OfferDecorator < ApplicationDecorator
   delegate_all
 
-  # Define presentation-specific methods here. Helpers are accessed through
-  # `helpers` (aka `h`). You can override attributes, for example:
-  #
-  #   def created_at
-  #     helpers.content_tag :span, class: 'time' do
-  #       object.created_at.strftime("%a %m/%d/%y")
-  #     end
-  #   end
+
+  def edit_link(request, offer)
+    link_to t('edit'), url_for(h.edit_request_offer_path(request, offer))
+  end
+
+  def destroy_link(request, offer)
+    link_to t('destroy'), url_for(h.request_offer_path(request, offer)),   data: {confirm: 'Na pewno?'} , method: :delete
+  end
 
 end

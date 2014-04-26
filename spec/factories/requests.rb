@@ -1,9 +1,6 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :request do
-    user ""
-    title "MyString"
-    description "MyText"
+    title { Faker::Movie.title }
+    description { Faker::Lorem.sentence }
   end
 end

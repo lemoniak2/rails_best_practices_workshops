@@ -4,4 +4,4 @@
     Back
   %h1 New offer
 
-= render 'form'
+= render partial: 'form', locals: {url: request_offers_path(request_object)}

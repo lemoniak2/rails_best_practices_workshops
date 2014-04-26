@@ -15,10 +15,10 @@
         %th
 
     %tbody
-      - offers.each do |offer|
+      - decorated_offers.each do |offer|
         %tr
           %td= offer.user
           %td= offer.message
-          %td= link_to 'Show', offer
-          %td= link_to 'Edit', edit_offer_path(offer)
-          %td= link_to 'Destroy', offer, :data => { confirm: 'Are you sure?' }, :method => :delete
+          %td= offer.show_link
+          %td= offer.edit_link
+          %td= offer.destroy_link

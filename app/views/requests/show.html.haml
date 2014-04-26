@@ -9,8 +9,35 @@
 
 %dl.dl-horizontal
   %dt Name:
-  %dd= request_object.user.name
+  %dd= decorated_request.user.name
   %dt Title:
-  %dd= request_object.title
+  %dd= decorated_request.title
   %dt Description:
-  %dd= request_object.description
+  %dd= decorated_request.description
+  %dt Owner name
+  %dd= decorated_request.created_at
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th User
+        %th Message
+        %th Time
+        %th
+        %th
+
+
+    %tbody
+      - decorated_offers.each do |offer|
+        %tr
+          %td= offer.user.name
+          %td= offer.message
+          %td= offer.created_at
+          -if offer.user == current_user
+            %td= offer.edit_link(decorated_request, offer)
+            %td= offer.destroy_link(decorated_request, offer)
+
+
+
+
+= render partial: '/offers/form', locals: {url: request_offers_path(request_object), offer: Offer.new}

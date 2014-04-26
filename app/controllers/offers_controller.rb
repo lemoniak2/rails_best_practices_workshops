@@ -1,11 +1,15 @@
 class OffersController < ApplicationController
   before_filter :authenticate_user!
   expose(:offer, attributes: :offer_params)
-  expose(:offers)
+  expose(:request_object, model: :request)
+  expose(:offers, ancestor: :request_object)
+  expose(:decorated_offer){offer.decorate}
+  expose(:decorated_offers){offers.decorate}
 
   def create
+    offer.user_id = current_user.id
     if offer.save
-      redirect_to offer, notice: 'Offer was successfully created.'
+      redirect_to offer.request, notice: 'Offer was successfully created.'
     else
       render :new
     end
@@ -13,15 +17,16 @@ class OffersController < ApplicationController
 
   def update
     if offer.update(offer_params)
-      redirect_to offer, notice: 'Offer was successfully updated.'
+      redirect_to offer.request, notice: 'Offer was successfully updated.'
     else
       render :edit
     end
   end
 
   def destroy
+    @request = offer.request
     offer.destroy
-    redirect_to offers_url, notice: 'Offer was successfully destroyed.'
+    redirect_to @request, notice: 'Offer was successfully destroyed.'
   end
 
   private

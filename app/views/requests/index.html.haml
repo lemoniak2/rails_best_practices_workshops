@@ -11,18 +11,16 @@
         %th User
         %th Title
         %th Description
+        %th Created at
         %th Offers count
-        %th
-        %th
         %th
 
     %tbody
-      - requests.each do |request|
+      - decorated_requests.each do |request|
         %tr
           %td= request.user.email
           %td= request.title
           %td= request.description
+          %td= request.created_at
           %td= request.offers_count
-          %td= link_to 'Show', request
-          %td= link_to 'Edit', edit_request_path(request)
-          %td= link_to 'Destroy', request, :data => { confirm: 'Are you sure?' }, :method => :delete
+          %td= request.show_link
