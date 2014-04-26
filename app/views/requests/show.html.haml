@@ -1,0 +1,16 @@
+.page-header
+  = link_to requests_path, :class => 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to edit_request_path(@request), :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    Edit
+  %h1 Show request
+
+%dl.dl-horizontal
+  %dt User:
+  %dd= @request.user
+  %dt Title:
+  %dd= @request.title
+  %dt Description:
+  %dd= @request.description
